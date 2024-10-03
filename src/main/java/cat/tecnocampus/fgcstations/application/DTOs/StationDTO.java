@@ -1,7 +1,18 @@
 package cat.tecnocampus.fgcstations.application.DTOs;
 
-public interface StationDTO {
-    String getName();
-    String getLongitud();
-    String getLatitud();
+public record StationDTO(String name, String longitud, String latitud) implements StationDTOInterface {
+    @Override
+    public String getName() {
+        return "";
+    }
+
+    @Override
+    public String getLongitud() {
+        return "";
+    }
+
+    @Override
+    public String getLatitud() {
+        return "";
+    }
 }

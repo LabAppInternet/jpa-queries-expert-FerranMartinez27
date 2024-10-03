@@ -1,6 +1,7 @@
 package cat.tecnocampus.fgcstations.application;
 
 import cat.tecnocampus.fgcstations.application.DTOs.*;
+import cat.tecnocampus.fgcstations.application.exception.UserDoesNotExistsException;
 import cat.tecnocampus.fgcstations.application.mapper.MapperHelper;
 import cat.tecnocampus.fgcstations.domain.FavoriteJourney;
 import cat.tecnocampus.fgcstations.domain.Journey;
@@ -45,7 +46,12 @@ public class FcgUserService {
     public User getDomainUser(String username) {
         // TODO 10.1: get the user (domain) given her username. If the user does not exist, throw a UserDoesNotExistsException
         //  You can solve this exercise without leaving this file
-        return null;
+        User user = userRepository.getUserByUsername(username);
+        if(user == null) {
+            throw new UserDoesNotExistsException("User " + username + " does not exist");
+        }
+
+        return user;
     }
 
 

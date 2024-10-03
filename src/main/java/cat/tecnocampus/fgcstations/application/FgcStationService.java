@@ -1,13 +1,14 @@
 package cat.tecnocampus.fgcstations.application;
 
 import cat.tecnocampus.fgcstations.application.DTOs.StationDTO;
+import cat.tecnocampus.fgcstations.application.DTOs.StationDTOInterface;
 import cat.tecnocampus.fgcstations.application.DTOs.StationTopFavoriteJourney;
 import cat.tecnocampus.fgcstations.application.exception.StationDoesNotExistsException;
-import cat.tecnocampus.fgcstations.application.mapper.MapperHelper;
 import cat.tecnocampus.fgcstations.domain.Station;
 import cat.tecnocampus.fgcstations.persistence.StationRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,26 +19,41 @@ public class FgcStationService {
         this.stationRepository = stationRepository;
     }
 
-    public List<StationDTO> getStationsDTO() {
+    public List<StationDTOInterface> getStationsDTO() {
         //TODO 1: get all stations (see the returned type)
-        return null;
+        List<Station> stations = stationRepository.getAllStations();
+        List<StationDTOInterface> stationDTOs = new ArrayList<StationDTOInterface>();
+        for (Station station : stations) {
+            stationDTOs.add(new StationDTO(station.getName(), station.getLongitud(), station.getLatitud()));
+        }
+        return stationDTOs;
     }
 
     public List<Station> getStationsDomain() {
         //TODO 2: get all stations (see you return a domain Station). Actually you don't need to leave this file
         // in order to complete this exercise
-        return null;
+        return stationRepository.getAllStations();
     }
 
     public Station getStation(String name) {
         // TODO 3: get a station by name (see the returned type). If the station does not exist, throw a StationDoesNotExistsException
         //  you won't need to write any sql (jpql) query
-        return null;
+        Station station = stationRepository.getStationByName(name);
+        if(station == null) {
+            throw new StationDoesNotExistsException("Station with name " + name + " does not exist");
+        }
+
+        return station;
     }
 
-    public StationDTO getStationDTO(String name) {
+    public StationDTOInterface getStationDTO(String name) {
         // TODO 4: get a station by name (see the returned type). If the station does not exist, throw a StationDoesNotExistsException
-        return null;
+        Station station = stationRepository.getStationByName(name);
+        if(station == null) {
+            throw new StationDoesNotExistsException("Station with name " + name + " does not exist");
+        }
+
+        return new StationDTO(station.getName(), station.getLongitud(), station.getLatitud());
     }
 
     public List<StationTopFavoriteJourney> getStationsOrderedByFavoriteJourneysAsEitherOriginOrDestination() {

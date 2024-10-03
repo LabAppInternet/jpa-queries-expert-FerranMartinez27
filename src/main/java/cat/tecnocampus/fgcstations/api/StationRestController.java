@@ -1,6 +1,6 @@
 package cat.tecnocampus.fgcstations.api;
 
-import cat.tecnocampus.fgcstations.application.DTOs.StationDTO;
+import cat.tecnocampus.fgcstations.application.DTOs.StationDTOInterface;
 import cat.tecnocampus.fgcstations.application.DTOs.StationTopFavoriteJourney;
 import cat.tecnocampus.fgcstations.application.FgcStationService;
 import cat.tecnocampus.fgcstations.domain.Station;
@@ -21,7 +21,7 @@ public class StationRestController {
     }
 
     @GetMapping("")
-    public List<StationDTO> getStations() {
+    public List<StationDTOInterface> getStations() {
         return fgcStationService.getStationsDTO();
     }
 
@@ -31,7 +31,7 @@ public class StationRestController {
     }
 
     @GetMapping("/{nom}")
-    public StationDTO getStation(@PathVariable String nom) {
+    public StationDTOInterface getStation(@PathVariable String nom) {
         return fgcStationService.getStationDTO(nom);
     }
 

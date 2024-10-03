@@ -7,6 +7,7 @@ import cat.tecnocampus.fgcstations.domain.JourneyId;
 import cat.tecnocampus.fgcstations.persistence.JourneyRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,23 +21,36 @@ public class FgcJouneyService {
     public List<Journey> getAllJourneysDomain() {
         //TODO 6: get all stations (see you return a domain Journey). Actually, you don't need to leave this file
         // in order to complete this exercise
-        return null;
+        return journeyRepository.findAll();
     }
 
     public List<JourneyDTO> getAllJourneysDTO() {
         //TODO 7: get all journeys (see the returned type)
-        return null;
+        List<Journey> journeys = journeyRepository.findAll();
+        List<JourneyDTO> journeyDTOs = new ArrayList<>();
+        for (Journey journey : journeys) {
+            journeyDTOs.add(new JourneyDTO(journey.getOrigin().toString(), journey.getDestination().toString()));
+        }
+        return journeyDTOs;
     }
 
     public Journey getJourneyDomain(String origin, String destination) {
         // TODO 8: get a journey by origin and destination (domain). If the journey does not exist, throw a JourneyDoesNotExistsException
         //  try no to use any sql (jpql) query, just come up with an appropriate method name
-        return null;
+        Journey journey = journeyRepository.findByOriginAndDestination(origin, destination);
+        if(journey == null) {
+            throw new JourneyDoesNotExistsException(origin, destination);
+        }
+        return journey;
     }
 
     public JourneyId getJourneyId(String origin, String destination) {
         // TODO 9: get a journey ID by origin and destination (domain JourneyId). If the journey does not exist, throw a JourneyDoesNotExistsException
         //  try no to use any sql (jpql) query, just come up with an appropriate method name
-        return null;
+        Journey journey = journeyRepository.findByOriginAndDestination(origin, destination);
+        if(journey == null) {
+            throw new JourneyDoesNotExistsException(origin, destination);
+        }
+        return new JourneyId(journey.getOrigin().toString(), journey.getDestination().toString());
     }
 }
