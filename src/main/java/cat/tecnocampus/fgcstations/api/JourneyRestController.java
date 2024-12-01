@@ -14,29 +14,31 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/journeys")
 public class JourneyRestController {
+    
     private final FgcJouneyService fgcJouneyService;
-
+    
     public JourneyRestController(FgcJouneyService fgcJouneyService) {
         this.fgcJouneyService = fgcJouneyService;
     }
-
+    
     @GetMapping("/dto")
     public List<JourneyDTO> getAllJourneys() {
         return fgcJouneyService.getAllJourneysDTO();
     }
-
+    
     @GetMapping("/domain")
     public List<Journey> getAllJourneysDomain() {
         return fgcJouneyService.getAllJourneysDomain();
     }
-
+    
     @GetMapping("/origin/{origin}/destination/{destination}")
     public Journey getJourneyAcordingToOriginAndDestination(@PathVariable String origin, @PathVariable String destination) {
         return fgcJouneyService.getJourneyDomain(origin, destination);
     }
-
+    
     @GetMapping("/id/origin/{origin}/destination/{destination}")
     public JourneyId getJourneyIdAcordingToOriginAndDestination(@PathVariable String origin, @PathVariable String destination) {
         return fgcJouneyService.getJourneyId(origin, destination);
     }
+    
 }

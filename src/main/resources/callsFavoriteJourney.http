@@ -22,10 +22,14 @@ Content-Type: application/json
   "origin": "Alcoletge",
   "destination": "Lleida-Pirineus",
   "dayTimes": [
-    {"dayOfWeek" : "Friday",
-      "time" : "12:50"},
-    {"dayOfWeek" : "Tuesday",
-      "time" : "13:50"}
+    {
+      "dayOfWeek": "Friday",
+      "time": "12:50"
+    },
+    {
+      "dayOfWeek": "Tuesday",
+      "time": "13:50"
+    }
   ]
 }
 
@@ -37,10 +41,14 @@ Content-Type: application/json
   "origin": "Alcoletge",
   "destination": "Alcoletge",
   "dayTimes": [
-    {"dayOfWeek" : "Monday",
-      "time" : "12:50"},
-    {"dayOfWeek" : "Tuesday",
-      "time" : "13:50"}
+    {
+      "dayOfWeek": "Monday",
+      "time": "12:50"
+    },
+    {
+      "dayOfWeek": "Tuesday",
+      "time": "13:50"
+    }
   ]
 }
 
@@ -52,10 +60,14 @@ Content-Type: application/json
   "origin": "Ll",
   "destination": "Al",
   "dayTimes": [
-    {"dayOfWeek" : "onday",
-      "time" : "12:0"},
-    {"dayOfWeek" : "Tuesday",
-      "time" : "a3:50"}
+    {
+      "dayOfWeek": "onday",
+      "time": "12:0"
+    },
+    {
+      "dayOfWeek": "Tuesday",
+      "time": "a3:50"
+    }
   ]
 }
 

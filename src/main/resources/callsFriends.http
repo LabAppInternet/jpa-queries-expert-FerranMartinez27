@@ -34,7 +34,9 @@ Content-Type: application/json
 
 {
   "username": "xoanra",
-  "friends": ["hola"]
+  "friends": [
+    "hola"
+  ]
 }
 
 ###

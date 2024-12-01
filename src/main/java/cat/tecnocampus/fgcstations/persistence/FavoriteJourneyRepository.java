@@ -7,7 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface FavoriteJourneyRepository extends JpaRepository<FavoriteJourney, String> {
-
+    
+    List<FavoriteJourney> findByUser(User user);
+    
     //TODO optional: Try to implement the query to get the FavoriteJourneysDTO of a user with its list of DayTimeStartDTO.
     // Is it possible to do it with a single query?
 }

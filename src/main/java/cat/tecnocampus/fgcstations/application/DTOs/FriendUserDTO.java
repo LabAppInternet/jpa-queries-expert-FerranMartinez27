@@ -1,10 +1,23 @@
 package cat.tecnocampus.fgcstations.application.DTOs;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import cat.tecnocampus.fgcstations.domain.Friend;
 
-public interface FriendUserDTO {
-    @JsonProperty("username")
-    String getUserUsername();
-    @JsonProperty("name")
-    String getUserName();
+public class FriendUserDTO implements FriendUserDTOInterface{
+    
+    private String username;
+    private String name;
+    
+    public FriendUserDTO(Friend friend) {
+    }
+    
+    @Override
+    public String getUserUsername() {
+        return username;
+    }
+    
+    @Override
+    public String getUserName() {
+        return name;
+    }
+    
 }

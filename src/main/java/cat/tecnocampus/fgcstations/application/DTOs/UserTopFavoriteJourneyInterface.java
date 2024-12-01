@@ -1,6 +1,6 @@
 package cat.tecnocampus.fgcstations.application.DTOs;
 
-public interface UserTopFriend {
+public interface UserTopFavoriteJourneyInterface {
     
     String getUsername();
     
@@ -10,6 +10,6 @@ public interface UserTopFriend {
     
     String getEmail();
     
-    int getNumberOfFriends();
+    int getNumberOfFavoriteJourneys();
     
 }
